@@ -677,7 +677,7 @@ class _HomeScreenState extends State<HomeScreen> {
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: const [
                           Text(
-                            'Gbedolo Kan',
+                            'Nom utilisateur',
                             style: TextStyle(
                               color: Colors.white,
                               fontSize: 16,
@@ -685,7 +685,7 @@ class _HomeScreenState extends State<HomeScreen> {
                             ),
                           ),
                           Text(
-                            'Client (C0123)',
+                            'Client ()',
                             style: TextStyle(
                               color: Colors.white,
                               fontSize: 14,

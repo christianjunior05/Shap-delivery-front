@@ -1,11 +1,56 @@
 import 'package:flutter/material.dart';
+import 'package:image_picker/image_picker.dart';
+import 'dart:io';
 
-class ProfileScreen extends StatelessWidget {
+class ProfileScreen extends StatefulWidget {
   const ProfileScreen({super.key});
+
+  @override
+  State<ProfileScreen> createState() => _ProfileScreenState();
+}
+
+class _ProfileScreenState extends State<ProfileScreen> {
+  final _phoneController = TextEditingController();
+  final _emailController = TextEditingController();
+  final _nameController = TextEditingController();
+  final _passwordController = TextEditingController();
+  File? _profileImage;
+  final _picker = ImagePicker();
+
+  @override
+  void dispose() {
+    _phoneController.dispose();
+    _emailController.dispose();
+    _nameController.dispose();
+    _passwordController.dispose();
+    super.dispose();
+  }
+
+  void _clearFields() {
+    setState(() {
+      _phoneController.clear();
+      _emailController.clear();
+      _nameController.clear();
+      _passwordController.clear();
+    });
+  }
+
+  Future<void> _pickImage() async {
+    try {
+      final XFile? image = await _picker.pickImage(source: ImageSource.gallery);
+      if (image != null) {
+        setState(() {
+          _profileImage = File(image.path);
+        });
+      }
+    } catch (e) {
+      debugPrint('Erreur lors de la sélection de l\'image: $e');
+    }
+  }
 
   Widget _buildTextField({
     required String label,
-    required String value,
+    required TextEditingController controller,
     required IconData suffixIcon,
   }) {
     return Container(
@@ -15,7 +60,7 @@ class ProfileScreen extends StatelessWidget {
         borderRadius: BorderRadius.circular(30),
       ),
       child: TextField(
-        controller: TextEditingController(text: value),
+        controller: controller,
         decoration: InputDecoration(
           labelText: label,
           border: InputBorder.none,
@@ -42,18 +87,49 @@ class ProfileScreen extends StatelessWidget {
           style: TextStyle(color: Colors.black),
         ),
         centerTitle: true,
+        actions: [
+          IconButton(
+            icon: const Icon(Icons.refresh, color: Colors.black),
+            onPressed: _clearFields,
+          ),
+        ],
       ),
       body: SingleChildScrollView(
         child: Column(
           children: [
             const SizedBox(height: 20),
-            const CircleAvatar(
-              radius: 60,
-              backgroundImage: AssetImage('assets/images/profile.png'),
+            GestureDetector(
+              onTap: _pickImage,
+              child: Stack(
+                children: [
+                  CircleAvatar(
+                    radius: 60,
+                    backgroundImage: _profileImage != null
+                        ? FileImage(_profileImage!) as ImageProvider
+                        : const AssetImage('assets/images/profile.png'),
+                  ),
+                  Positioned(
+                    bottom: 0,
+                    right: 0,
+                    child: Container(
+                      padding: const EdgeInsets.all(4),
+                      decoration: const BoxDecoration(
+                        color: Color(0xFFFF5722),
+                        shape: BoxShape.circle,
+                      ),
+                      child: const Icon(
+                        Icons.camera_alt,
+                        color: Colors.white,
+                        size: 20,
+                      ),
+                    ),
+                  ),
+                ],
+              ),
             ),
             const SizedBox(height: 10),
             const Text(
-              'Gbedolo Kan',
+              'Nom utilisateur',
               style: TextStyle(
                 fontSize: 24,
                 fontWeight: FontWeight.bold,
@@ -62,22 +138,22 @@ class ProfileScreen extends StatelessWidget {
             const SizedBox(height: 30),
             _buildTextField(
               label: 'Tél:',
-              value: '+225 05 05 00 00 00',
+              controller: _phoneController,
               suffixIcon: Icons.edit,
             ),
             _buildTextField(
               label: 'Email:',
-              value: 'gbedolokan@gmail.com',
+              controller: _emailController,
               suffixIcon: Icons.edit,
             ),
             _buildTextField(
               label: 'Nom et prénom:',
-              value: 'Gbedolo KAN',
+              controller: _nameController,
               suffixIcon: Icons.edit,
             ),
             _buildTextField(
               label: 'Mot de passe:',
-              value: 'Gbedolopdd',
+              controller: _passwordController,
               suffixIcon: Icons.edit,
             ),
             const SizedBox(height: 40),
