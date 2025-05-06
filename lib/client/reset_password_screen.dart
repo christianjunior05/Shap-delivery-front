@@ -17,13 +17,10 @@ class ResetPasswordScreen extends StatelessWidget {
               const SizedBox(height: 50),
               // Logo Shap
               const Center(
-                child: Text(
-                  'Shap',
-                  style: TextStyle(
-                    color: Colors.black,
-                    fontSize: 48,
-                    fontWeight: FontWeight.bold,
-                  ),
+                child: Image(
+                  image: AssetImage('assets/images/Shap-noir 1.png'),
+                  height: 80,
+                  fit: BoxFit.contain,
                 ),
               ),
               const SizedBox(height: 40),

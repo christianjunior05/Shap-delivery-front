@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'login_screen.dart';
 
 class RegisterScreen extends StatelessWidget {
   const RegisterScreen({super.key});
@@ -16,13 +17,10 @@ class RegisterScreen extends StatelessWidget {
               const SizedBox(height: 50),
               // Logo Shap
               const Center(
-                child: Text(
-                  'Shap',
-                  style: TextStyle(
-                    color: Colors.black,
-                    fontSize: 48,
-                    fontWeight: FontWeight.bold,
-                  ),
+                child: Image(
+                  image: AssetImage('assets/images/Shap-noir 1.png'),
+                  height: 80,
+                  fit: BoxFit.contain,
                 ),
               ),
               const SizedBox(height: 40),
@@ -56,7 +54,13 @@ class RegisterScreen extends StatelessWidget {
                 width: double.infinity,
                 child: ElevatedButton(
                   onPressed: () {
-                    // Action d'inscription
+                    // Redirection vers la page de connexion
+                    Navigator.pushReplacement(
+                      context,
+                      MaterialPageRoute(
+                        builder: (context) => const LoginScreen(),
+                      ),
+                    );
                   },
                   style: ElevatedButton.styleFrom(
                     backgroundColor: const Color(0xFFFF5722),

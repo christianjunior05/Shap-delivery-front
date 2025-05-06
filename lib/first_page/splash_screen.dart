@@ -23,21 +23,14 @@ class SplashScreen extends StatelessWidget {
                     fit: BoxFit.contain,
                   ),
                   const SizedBox(height: 20),
-                  // Logo texte "Shap"
-                  const Text(
-                    'Shap',
-                    style: TextStyle(
-                      color: Colors.white,
-                      fontSize: 48,
-                      fontWeight: FontWeight.bold,
-                    ),
+                  // Logo Shap
+                  Image.asset(
+                    'assets/images/Group 137.png',
+                    height: 100,
+                    fit: BoxFit.contain,
                   ),
                   const SizedBox(height: 10),
                   // Slogan
-                  const Text(
-                    'Rapide et sécurisé !',
-                    style: TextStyle(color: Colors.white, fontSize: 18),
-                  ),
                 ],
               ),
             ),

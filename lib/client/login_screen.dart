@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'register_screen.dart';
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'package:flutter_svg/flutter_svg.dart';
 
 import 'forgot_password_screen.dart';
 import 'home/home_screen.dart';
@@ -34,13 +36,10 @@ class _LoginScreenState extends State<LoginScreen> {
               const SizedBox(height: 50),
               // Logo Shap
               const Center(
-                child: Text(
-                  'Shap',
-                  style: TextStyle(
-                    color: Colors.black,
-                    fontSize: 48,
-                    fontWeight: FontWeight.bold,
-                  ),
+                child: Image(
+                  image: AssetImage('assets/images/Shap-noir 1.png'),
+                  height: 80,
+                  fit: BoxFit.contain,
                 ),
               ),
               const SizedBox(height: 40),
@@ -123,7 +122,7 @@ class _LoginScreenState extends State<LoginScreen> {
                 ],
               ),
               const SizedBox(height: 40),
-              // Lien vers l'inscription
+              // Texte "S'inscrire avec"
               Center(
                 child: TextButton(
                   onPressed: () {
@@ -134,14 +133,98 @@ class _LoginScreenState extends State<LoginScreen> {
                     );
                   },
                   child: const Text(
-                    "S'inscrire",
+                    "S'inscrire avec",
                     style: TextStyle(
-                      color: Color(0xFFFF5722),
+                      color: Colors.black54,
                       fontSize: 16,
                       fontWeight: FontWeight.bold,
                     ),
                   ),
                 ),
+              ),
+              const SizedBox(height: 20),
+              // Icônes de connexion sociale
+              Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  Container(
+                    width: 50,
+                    height: 50,
+                    decoration: BoxDecoration(
+                      shape: BoxShape.circle,
+                      color: Colors.white,
+                      boxShadow: [
+                        BoxShadow(
+                          color: Colors.black.withOpacity(0.1),
+                          spreadRadius: 1,
+                          blurRadius: 3,
+                          offset: const Offset(0, 1),
+                        ),
+                      ],
+                    ),
+                    child: IconButton(
+                      icon: SvgPicture.asset(
+                        'assets/images/google_icon.svg',
+                        width: 24,
+                        height: 24,
+                      ),
+                      onPressed: () {
+                        // Implémenter la connexion Google
+                      },
+                    ),
+                  ),
+                  const SizedBox(width: 20),
+                  Container(
+                    width: 50,
+                    height: 50,
+                    decoration: BoxDecoration(
+                      shape: BoxShape.circle,
+                      color: Colors.white,
+                      boxShadow: [
+                        BoxShadow(
+                          color: Colors.black.withOpacity(0.1),
+                          spreadRadius: 1,
+                          blurRadius: 3,
+                          offset: const Offset(0, 1),
+                        ),
+                      ],
+                    ),
+                    child: IconButton(
+                      icon: SvgPicture.asset(
+                        'assets/images/facebook_icon.svg',
+                        width: 24,
+                        height: 24,
+                      ),
+                      onPressed: () {
+                        // Implémenter la connexion Facebook
+                      },
+                    ),
+                  ),
+                  const SizedBox(width: 20),
+                  Container(
+                    width: 50,
+                    height: 50,
+                    decoration: BoxDecoration(
+                      shape: BoxShape.circle,
+                      color: Colors.white,
+                      boxShadow: [
+                        BoxShadow(
+                          color: Colors.black.withOpacity(0.1),
+                          spreadRadius: 1,
+                          blurRadius: 3,
+                          offset: const Offset(0, 1),
+                        ),
+                      ],
+                    ),
+                    child: IconButton(
+                      icon: const Icon(Icons.mail_outline,
+                          color: Colors.orange, size: 24),
+                      onPressed: () {
+                        // Implémenter la connexion par email
+                      },
+                    ),
+                  ),
+                ],
               ),
             ],
           ),

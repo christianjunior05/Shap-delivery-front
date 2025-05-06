@@ -15,24 +15,12 @@ class UserTypeScreen extends StatelessWidget {
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               const SizedBox(height: 50),
-              // Logo et slogan
-              const Center(
-                child: Column(
-                  children: [
-                    Text(
-                      'Shap',
-                      style: TextStyle(
-                        color: Colors.white,
-                        fontSize: 48,
-                        fontWeight: FontWeight.bold,
-                      ),
-                    ),
-                    SizedBox(height: 10),
-                    Text(
-                      'Rapide et sécurisé !',
-                      style: TextStyle(color: Colors.white, fontSize: 18),
-                    ),
-                  ],
+              // Logo
+              Center(
+                child: Image.asset(
+                  'assets/images/Group 137.png',
+                  height: 100,
+                  fit: BoxFit.contain,
                 ),
               ),
               const SizedBox(height: 60),
