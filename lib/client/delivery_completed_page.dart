@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
 import 'delivery_rating_page.dart';
+import 'dialogs/call_screen.dart';
+import 'dialogs/message_screen.dart';
 
 class DeliveryCompletedPage extends StatefulWidget {
   const DeliveryCompletedPage({Key? key}) : super(key: key);
@@ -152,14 +154,14 @@ class _DeliveryCompletedPageState extends State<DeliveryCompletedPage> {
             crossAxisAlignment: CrossAxisAlignment.start,
             children: const [
               Text(
-                'Kome Bakary',
+                '',
                 style: TextStyle(
                   fontSize: 16,
                   fontWeight: FontWeight.bold,
                 ),
               ),
               Text(
-                'Livreur (L0001)',
+                'Livreur ()',
                 style: TextStyle(
                   color: Colors.grey,
                 ),
@@ -169,11 +171,32 @@ class _DeliveryCompletedPageState extends State<DeliveryCompletedPage> {
         ),
         IconButton(
           icon: const Icon(Icons.phone, color: Colors.deepOrange),
-          onPressed: () {},
+          onPressed: () {
+            Navigator.push(
+              context,
+              MaterialPageRoute(
+                fullscreenDialog: true,
+                builder: (context) => const CallScreen(
+                  phoneNumber: "",
+                  livreurName: "",
+                ),
+              ),
+            );
+          },
         ),
         IconButton(
           icon: const Icon(Icons.message, color: Colors.deepOrange),
-          onPressed: () {},
+          onPressed: () {
+            Navigator.push(
+              context,
+              MaterialPageRoute(
+                fullscreenDialog: true,
+                builder: (context) => const MessageScreen(
+                  livreurName: "",
+                ),
+              ),
+            );
+          },
         ),
       ],
     );

@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
 import 'delivery_tracking_page.dart';
+import 'dialogs/call_screen.dart';
+import 'dialogs/message_screen.dart';
 
 class DeliveryConfirmationPage extends StatefulWidget {
   const DeliveryConfirmationPage({Key? key}) : super(key: key);
@@ -98,22 +100,22 @@ class _DeliveryConfirmationPageState extends State<DeliveryConfirmationPage> {
                 _buildDeliveryInfo(
                   Icons.timer,
                   'Durée de la livraison',
-                  '15-30 mins',
+                  ' mins',
                 ),
                 _buildDeliveryInfo(
                   Icons.location_on,
                   'Adresse de départ',
-                  'Cocody Riv Palmeraie',
+                  '',
                 ),
                 _buildDeliveryInfo(
                   Icons.location_on_outlined,
                   'Adresse de destination',
-                  'Abobo Care Bingerville',
+                  '',
                 ),
                 _buildDeliveryInfo(
                   Icons.attach_money,
                   'Prix',
-                  '2 500 Fr CFA',
+                  ' CFA',
                 ),
                 const SizedBox(height: 16),
                 _buildDeliveryMan(),
@@ -227,13 +229,32 @@ class _DeliveryConfirmationPageState extends State<DeliveryConfirmationPage> {
         IconButton(
           icon: const Icon(Icons.phone, color: Colors.deepOrange),
           onPressed: () {
-            // Handle phone call
+            // Ouvrir notre écran d'appel personnalisé en plein écran
+            Navigator.push(
+              context,
+              MaterialPageRoute(
+                fullscreenDialog: true,
+                builder: (context) => const CallScreen(
+                  phoneNumber: "",
+                  livreurName: "",
+                ),
+              ),
+            );
           },
         ),
         IconButton(
           icon: const Icon(Icons.message, color: Colors.deepOrange),
           onPressed: () {
-            // Handle message
+            // Ouvrir notre écran de messagerie personnalisé en plein écran
+            Navigator.push(
+              context,
+              MaterialPageRoute(
+                fullscreenDialog: true,
+                builder: (context) => const MessageScreen(
+                  livreurName: "",
+                ),
+              ),
+            );
           },
         ),
       ],

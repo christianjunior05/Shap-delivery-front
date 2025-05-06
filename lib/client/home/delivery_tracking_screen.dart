@@ -193,7 +193,7 @@ class DeliveryTrackingScreen extends StatelessWidget {
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
                             Text(
-                              'Kome Bakary',
+                              '',
                               style: TextStyle(
                                 fontWeight: FontWeight.bold,
                                 fontSize: 16,

@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
 import 'dart:async';
+import '../dialogs/cancel_dialog.dart';
+import 'home_screen.dart';
 
 class RealTimeTrackingScreen extends StatefulWidget {
   const RealTimeTrackingScreen({super.key});
@@ -117,8 +119,8 @@ class _RealTimeTrackingScreenState extends State<RealTimeTrackingScreen> {
                     ),
                     markers: {
                       Marker(
-                        markerId: MarkerId('driver'),
-                        position: LatLng(5.3484, -4.0305),
+                        markerId: const MarkerId('driver'),
+                        position: const LatLng(5.3484, -4.0305),
                         icon: BitmapDescriptor.defaultMarkerWithHue(
                             BitmapDescriptor.hueOrange),
                       ),
@@ -155,23 +157,23 @@ class _RealTimeTrackingScreenState extends State<RealTimeTrackingScreen> {
                   _buildDeliveryDetail(
                     icon: Icons.access_time,
                     title: 'Durée de la livraison',
-                    value: 'À 5 mins',
+                    value: '',
                   ),
                   _buildDeliveryDetail(
                     icon: Icons.location_on,
                     title: 'Adresse de départ',
-                    value: 'Cocody Riv Palmeraie',
+                    value: '',
                   ),
                   _buildDeliveryDetail(
                     icon: Icons.location_on,
                     title: 'Adresse de destination',
-                    value: 'Abobo Gare Bingerville',
+                    value: '',
                     showModifier: true,
                   ),
                   _buildDeliveryDetail(
                     icon: Icons.attach_money,
                     title: 'Prix',
-                    value: '2 500 fr CFA',
+                    value: 'fr CFA',
                   ),
                   const SizedBox(height: 16),
                   // Informations du livreur
@@ -188,14 +190,14 @@ class _RealTimeTrackingScreenState extends State<RealTimeTrackingScreen> {
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
                             Text(
-                              'Kome Bakary',
+                              '',
                               style: TextStyle(
                                 fontWeight: FontWeight.bold,
                                 fontSize: 16,
                               ),
                             ),
                             Text(
-                              'Livreur (L0001)',
+                              'Livreur ()',
                               style: TextStyle(
                                 color: Colors.grey,
                                 fontSize: 14,
@@ -219,7 +221,15 @@ class _RealTimeTrackingScreenState extends State<RealTimeTrackingScreen> {
                   SizedBox(
                     width: double.infinity,
                     child: ElevatedButton(
-                      onPressed: () {},
+                      onPressed: () {
+                        // Rediriger vers la page de suivi du trajet
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                              builder: (context) =>
+                                  const DeliveryTrackingScreen()),
+                        );
+                      },
                       style: ElevatedButton.styleFrom(
                         backgroundColor: const Color(0xFFFF5722),
                         padding: const EdgeInsets.symmetric(vertical: 16),
@@ -239,7 +249,12 @@ class _RealTimeTrackingScreenState extends State<RealTimeTrackingScreen> {
                   const SizedBox(height: 8),
                   Center(
                     child: TextButton(
-                      onPressed: () {},
+                      onPressed: () {
+                        showDialog(
+                          context: context,
+                          builder: (context) => const CancelDialog(),
+                        );
+                      },
                       child: const Text(
                         'Annuler',
                         style: TextStyle(
@@ -309,6 +324,308 @@ class _RealTimeTrackingScreenState extends State<RealTimeTrackingScreen> {
             ),
           ),
         ],
+      ),
+    );
+  }
+}
+
+// Écran de suivi du trajet du livreur
+class DeliveryTrackingScreen extends StatelessWidget {
+  const DeliveryTrackingScreen({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(
+        title: const Text('Suivi du trajet'),
+        backgroundColor: const Color(0xFFFF5722),
+        foregroundColor: Colors.white,
+      ),
+      body: Column(
+        children: [
+          Expanded(
+            child: GoogleMap(
+              initialCameraPosition: const CameraPosition(
+                target: LatLng(5.3484, -4.0305), // Abidjan coordinates
+                zoom: 15,
+              ),
+              markers: {
+                Marker(
+                  markerId: const MarkerId('driver'),
+                  position: const LatLng(5.3484, -4.0305),
+                  icon: BitmapDescriptor.defaultMarkerWithHue(
+                      BitmapDescriptor.hueOrange),
+                ),
+                const Marker(
+                  markerId: MarkerId('destination'),
+                  position: LatLng(5.3550, -4.0200),
+                ),
+              },
+              polylines: {
+                Polyline(
+                  polylineId: const PolylineId('route'),
+                  points: const [
+                    LatLng(5.3484, -4.0305),
+                    LatLng(5.3550, -4.0200),
+                  ],
+                  color: const Color(0xFFFF5722),
+                  width: 5,
+                ),
+              },
+            ),
+          ),
+          Container(
+            padding: const EdgeInsets.all(16),
+            child: Column(
+              children: [
+                const Text(
+                  'Le livreur est en route vers la destination',
+                  style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
+                ),
+                const SizedBox(height: 16),
+                SizedBox(
+                  width: double.infinity,
+                  child: ElevatedButton(
+                    onPressed: () {
+                      // Rediriger vers la page de confirmation
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                            builder: (context) =>
+                                const DeliveryConfirmationScreen()),
+                      );
+                    },
+                    style: ElevatedButton.styleFrom(
+                      backgroundColor: const Color(0xFFFF5722),
+                      padding: const EdgeInsets.symmetric(vertical: 16),
+                      shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(8),
+                      ),
+                    ),
+                    child: const Text(
+                      'Confirmer la livraison',
+                      style: TextStyle(
+                        fontSize: 16,
+                        fontWeight: FontWeight.bold,
+                        color: Colors.white,
+                      ),
+                    ),
+                  ),
+                ),
+              ],
+            ),
+          ),
+        ],
+      ),
+    );
+  }
+}
+
+// Écran de confirmation de livraison
+class DeliveryConfirmationScreen extends StatelessWidget {
+  const DeliveryConfirmationScreen({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(
+        title: const Text('Confirmation de livraison'),
+        backgroundColor: const Color(0xFFFF5722),
+        foregroundColor: Colors.white,
+      ),
+      body: Padding(
+        padding: const EdgeInsets.all(16.0),
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            const Icon(
+              Icons.check_circle,
+              color: Color(0xFFFF5722),
+              size: 80,
+            ),
+            const SizedBox(height: 24),
+            const Text(
+              'Livraison confirmée',
+              style: TextStyle(
+                fontSize: 24,
+                fontWeight: FontWeight.bold,
+              ),
+            ),
+            const SizedBox(height: 16),
+            const Text(
+              'Votre colis a été livré avec succès.',
+              textAlign: TextAlign.center,
+              style: TextStyle(fontSize: 16),
+            ),
+            const SizedBox(height: 32),
+            SizedBox(
+              width: double.infinity,
+              child: ElevatedButton(
+                onPressed: () {
+                  // Rediriger vers la page d'avis
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                        builder: (context) => const DeliveryFeedbackScreen()),
+                  );
+                },
+                style: ElevatedButton.styleFrom(
+                  backgroundColor: const Color(0xFFFF5722),
+                  padding: const EdgeInsets.symmetric(vertical: 16),
+                  shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(8),
+                  ),
+                ),
+                child: const Text(
+                  'Donner mon avis',
+                  style: TextStyle(
+                    fontSize: 16,
+                    fontWeight: FontWeight.bold,
+                    color: Colors.white,
+                  ),
+                ),
+              ),
+            ),
+          ],
+        ),
+      ),
+    );
+  }
+}
+
+// Écran pour donner un avis
+class DeliveryFeedbackScreen extends StatefulWidget {
+  const DeliveryFeedbackScreen({super.key});
+
+  @override
+  State<DeliveryFeedbackScreen> createState() => _DeliveryFeedbackScreenState();
+}
+
+class _DeliveryFeedbackScreenState extends State<DeliveryFeedbackScreen> {
+  int _driverRating = 0;
+  final TextEditingController _commentController = TextEditingController();
+
+  @override
+  void dispose() {
+    _commentController.dispose();
+    super.dispose();
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(
+        title: const Text('Avis'),
+        backgroundColor: const Color(0xFFFF5722),
+        foregroundColor: Colors.white,
+      ),
+      body: SingleChildScrollView(
+        padding: const EdgeInsets.all(16.0),
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            const SizedBox(height: 16),
+            // Informations du livreur
+            Row(
+              children: [
+                const CircleAvatar(
+                  radius: 25,
+                  backgroundImage:
+                      AssetImage('assets/images/driver_avatar.png'),
+                ),
+                const SizedBox(width: 16),
+                const Expanded(
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Text(
+                        'Nom du livreur',
+                        style: TextStyle(
+                          fontWeight: FontWeight.bold,
+                          fontSize: 16,
+                        ),
+                      ),
+                    ],
+                  ),
+                ),
+              ],
+            ),
+            const SizedBox(height: 24),
+            // Étoiles de notation
+            Row(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: List.generate(
+                5,
+                (index) => IconButton(
+                  icon: Icon(
+                    index < _driverRating ? Icons.star : Icons.star_border,
+                    color: index < _driverRating
+                        ? const Color(0xFFFF5722)
+                        : Colors.grey,
+                    size: 36,
+                  ),
+                  onPressed: () {
+                    setState(() {
+                      _driverRating = index + 1;
+                    });
+                  },
+                ),
+              ),
+            ),
+            const SizedBox(height: 24),
+            const Text(
+              'Souhaite-vous en dire plus ?',
+              style: TextStyle(
+                fontSize: 16,
+                fontWeight: FontWeight.bold,
+              ),
+            ),
+            const SizedBox(height: 8),
+            TextField(
+              controller: _commentController,
+              maxLines: 4,
+              decoration: const InputDecoration(
+                hintText: 'Laisser un commentaire à propos du livreur...',
+                border: OutlineInputBorder(
+                  borderRadius: BorderRadius.all(Radius.circular(8)),
+                ),
+                focusedBorder: OutlineInputBorder(
+                  borderRadius: BorderRadius.all(Radius.circular(8)),
+                  borderSide: BorderSide(color: Color(0xFFFF5722)),
+                ),
+              ),
+            ),
+            const SizedBox(height: 32),
+            SizedBox(
+              width: double.infinity,
+              child: ElevatedButton(
+                onPressed: () {
+                  // Soumission de l'avis et redirection vers HomeScreen
+                  Navigator.pushAndRemoveUntil(
+                    context,
+                    MaterialPageRoute(builder: (context) => const HomeScreen()),
+                    (route) => false,
+                  );
+                },
+                style: ElevatedButton.styleFrom(
+                  backgroundColor: const Color(0xFFFF5722),
+                  padding: const EdgeInsets.symmetric(vertical: 16),
+                  shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(8),
+                  ),
+                ),
+                child: const Text(
+                  'Envoyer',
+                  style: TextStyle(
+                    fontSize: 16,
+                    fontWeight: FontWeight.bold,
+                    color: Colors.white,
+                  ),
+                ),
+              ),
+            ),
+          ],
+        ),
       ),
     );
   }

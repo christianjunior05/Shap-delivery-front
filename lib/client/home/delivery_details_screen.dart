@@ -58,24 +58,24 @@ class DeliveryDetailsScreen extends StatelessWidget {
                           const SizedBox(height: 30),
                           // Adresse de départ et téléphone
                           _buildTextField(
-                            hintText: 'Cocody Faya, Avenue 16, Rue 12',
+                            hintText: '',
                             icon: Icons.location_on_outlined,
                           ),
                           const SizedBox(height: 15),
                           _buildTextField(
-                            hintText: '05 05 00 00 00',
+                            hintText: '',
                             icon: Icons.phone,
                             keyboardType: TextInputType.phone,
                           ),
                           const SizedBox(height: 20),
                           // Adresse de destination et téléphone
                           _buildTextField(
-                            hintText: 'Bingerville, FEH KESSE, Cité 3',
+                            hintText: '',
                             icon: Icons.location_on,
                           ),
                           const SizedBox(height: 15),
                           _buildTextField(
-                            hintText: '05 04 00 00 00',
+                            hintText: '',
                             icon: Icons.phone,
                             keyboardType: TextInputType.phone,
                           ),
@@ -86,9 +86,8 @@ class DeliveryDetailsScreen extends StatelessWidget {
                               onPressed: () {
                                 Navigator.of(context).push(
                                   MaterialPageRoute(
-                                    builder:
-                                        (context) =>
-                                            const SearchDriversScreen(),
+                                    builder: (context) =>
+                                        const SearchDriversScreen(),
                                   ),
                                 );
                               },

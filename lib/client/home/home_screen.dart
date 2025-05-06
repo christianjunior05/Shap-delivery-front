@@ -232,34 +232,39 @@ class _HomeScreenState extends State<HomeScreen> {
                   ),
                 ),
                 const SizedBox(height: 10),
-                Row(
-                  children: [
-                    Container(
-                      decoration: BoxDecoration(
-                        border: Border.all(color: Color(0xFFFF5722)),
-                        borderRadius: BorderRadius.circular(30),
-                        color: Colors.white,
-                      ),
-                      padding: const EdgeInsets.symmetric(
-                        horizontal: 12,
-                        vertical: 6,
-                      ),
-                      child: Row(
-                        children: [
-                          Icon(Icons.location_on, color: Color(0xFFFF5722)),
-                          const SizedBox(width: 5),
-                          Text(
-                            'Ma position',
-                            style: TextStyle(
-                              color: Color(0xFFFF5722),
-                              fontWeight: FontWeight.w500,
-                              decoration: TextDecoration.underline,
+                GestureDetector(
+                  onTap: () {
+                    // Action à effectuer lors du clic sur 'Ma position'
+                    print('Ma position cliquée');
+                  },
+                  child: Row(
+                    children: [
+                      Container(
+                        decoration: BoxDecoration(
+                          border: Border.all(color: Color(0xFFFF5722)),
+                          borderRadius: BorderRadius.circular(30),
+                          color: Colors.white,
+                        ),
+                        padding: const EdgeInsets.symmetric(
+                          horizontal: 12,
+                          vertical: 6,
+                        ),
+                        child: Row(
+                          children: [
+                            Icon(Icons.location_on, color: Color(0xFFFF5722)),
+                            const SizedBox(width: 5),
+                            Text(
+                              'Ma position',
+                              style: TextStyle(
+                                color: Color(0xFFFF5722),
+                                fontWeight: FontWeight.w500,
+                              ),
                             ),
-                          ),
-                        ],
+                          ],
+                        ),
                       ),
-                    ),
-                  ],
+                    ],
+                  ),
                 ),
                 const SizedBox(height: 10),
                 const Align(

@@ -1,6 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
 import 'delivery_confirmation_page.dart';
+import 'dialogs/call_screen.dart';
+import 'dialogs/message_screen.dart';
+import 'dialogs/cancel_dialog.dart';
+import 'home/home_screen.dart';
 
 class DeliveryTrackingPage extends StatefulWidget {
   const DeliveryTrackingPage({Key? key}) : super(key: key);
@@ -65,23 +69,23 @@ class _DeliveryTrackingPageState extends State<DeliveryTrackingPage> {
                 const SizedBox(height: 16),
                 _buildDeliveryInfo(
                   Icons.timer,
-                  'Durée de la livraison',
-                  '15-30 mins',
+                  '',
+                  'mins',
                 ),
                 _buildDeliveryInfo(
                   Icons.location_on,
                   'Adresse de départ',
-                  'Cocody Riv Palmeraie',
+                  '',
                 ),
                 _buildDeliveryInfo(
                   Icons.location_on_outlined,
                   'Adresse de destination',
-                  'Abobo Care Bingerville',
+                  '',
                 ),
                 _buildDeliveryInfo(
                   Icons.attach_money,
                   'Prix',
-                  '2 500 Fr CFA',
+                  'CFA',
                 ),
                 const SizedBox(height: 16),
                 _buildDeliveryMan(),
@@ -114,7 +118,12 @@ class _DeliveryTrackingPageState extends State<DeliveryTrackingPage> {
                 SizedBox(
                   width: double.infinity,
                   child: TextButton(
-                    onPressed: () {},
+                    onPressed: () {
+                      showDialog(
+                        context: context,
+                        builder: (context) => const CancelDialog(),
+                      );
+                    },
                     child: const Text(
                       'Annuler',
                       style: TextStyle(
@@ -176,14 +185,14 @@ class _DeliveryTrackingPageState extends State<DeliveryTrackingPage> {
             crossAxisAlignment: CrossAxisAlignment.start,
             children: const [
               Text(
-                'Kome Bakary',
+                '',
                 style: TextStyle(
                   fontSize: 16,
                   fontWeight: FontWeight.bold,
                 ),
               ),
               Text(
-                'Livreur (L0001)',
+                'Livreur ()',
                 style: TextStyle(
                   color: Colors.grey,
                 ),
@@ -193,11 +202,32 @@ class _DeliveryTrackingPageState extends State<DeliveryTrackingPage> {
         ),
         IconButton(
           icon: const Icon(Icons.phone, color: Colors.deepOrange),
-          onPressed: () {},
+          onPressed: () {
+            Navigator.push(
+              context,
+              MaterialPageRoute(
+                fullscreenDialog: true,
+                builder: (context) => const CallScreen(
+                  phoneNumber: "+225 05 05 00 00",
+                  livreurName: "Kome Bakary",
+                ),
+              ),
+            );
+          },
         ),
         IconButton(
           icon: const Icon(Icons.message, color: Colors.deepOrange),
-          onPressed: () {},
+          onPressed: () {
+            Navigator.push(
+              context,
+              MaterialPageRoute(
+                fullscreenDialog: true,
+                builder: (context) => const MessageScreen(
+                  livreurName: "",
+                ),
+              ),
+            );
+          },
         ),
       ],
     );

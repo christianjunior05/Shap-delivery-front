@@ -106,16 +106,12 @@ class _DeliveryRatingPageState extends State<DeliveryRatingPage> {
                   ),
                 ),
                 onPressed: () {
-                  if (rating == 0) {
-                    Navigator.push(
-                      context,
-                      MaterialPageRoute(
-                        builder: (context) => const DeliveryRatingOptionsPage(),
-                      ),
-                    );
-                  } else {
-                    // Handle submission of positive rating
-                  }
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                      builder: (context) => const DeliveryRatingOptionsPage(),
+                    ),
+                  );
                 },
                 child: const Text(
                   'Envoyer',
