@@ -19,15 +19,13 @@ class LoginLivreur extends StatelessWidget {
                 children: [
                   const SizedBox(height: 32),
                   // Logo stylisé
-                  const Text(
-                    'Shap',
-                    style: TextStyle(
-                      fontFamily: 'Lobster', // Assurez-vous d'avoir cette police ou adaptez
-                      fontSize: 80,
-                      fontWeight: FontWeight.bold,
-                      color: Colors.black,
-                    ),
-                  ),
+                  const Center(
+                child: Image(
+                  image: AssetImage('assets/images/Shap-noir 1.png'),
+                  height: 80,
+                  fit: BoxFit.contain,
+                ),
+              ),
                   const SizedBox(height: 48),
                   const Text(
                     'Se connecter',

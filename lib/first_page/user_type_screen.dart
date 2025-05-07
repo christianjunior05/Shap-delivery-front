@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import '../client/login_screen.dart';
+import '../livreur/login_livreur.dart';
 
 class UserTypeScreen extends StatelessWidget {
   const UserTypeScreen({super.key});
@@ -50,7 +51,11 @@ class UserTypeScreen extends StatelessWidget {
               _buildButton(
                 title: 'Livreur',
                 onPressed: () {
-                  // Navigation vers la page livreur
+                  Navigator.of(context).pushReplacement(
+                    MaterialPageRoute(
+                      builder: (context) => const LoginLivreur(),
+                    ),
+                  );
                 },
               ),
             ],

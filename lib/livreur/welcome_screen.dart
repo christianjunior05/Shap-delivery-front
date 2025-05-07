@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'commandes_screen.dart';
 
 class WelcomeScreen extends StatelessWidget {
   const WelcomeScreen({Key? key}) : super(key: key);
@@ -63,7 +64,8 @@ class WelcomeScreen extends StatelessWidget {
                             hintText: 'Identifiant',
                             filled: true,
                             fillColor: Colors.white,
-                            contentPadding: const EdgeInsets.symmetric(vertical: 16, horizontal: 16),
+                            contentPadding: const EdgeInsets.symmetric(
+                                vertical: 16, horizontal: 16),
                             border: OutlineInputBorder(
                               borderRadius: BorderRadius.circular(28),
                               borderSide: BorderSide.none,
@@ -77,7 +79,8 @@ class WelcomeScreen extends StatelessWidget {
                             hintText: 'Mot de passe',
                             filled: true,
                             fillColor: Colors.white,
-                            contentPadding: const EdgeInsets.symmetric(vertical: 16, horizontal: 16),
+                            contentPadding: const EdgeInsets.symmetric(
+                                vertical: 16, horizontal: 16),
                             border: OutlineInputBorder(
                               borderRadius: BorderRadius.circular(28),
                               borderSide: BorderSide.none,
@@ -88,7 +91,13 @@ class WelcomeScreen extends StatelessWidget {
                         SizedBox(
                           width: double.infinity,
                           child: ElevatedButton(
-                            onPressed: () {},
+                            onPressed: () {
+                              Navigator.of(context).pushReplacement(
+                                MaterialPageRoute(
+                                  builder: (context) => const CommandesScreen(),
+                                ),
+                              );
+                            },
                             style: ElevatedButton.styleFrom(
                               backgroundColor: Colors.white,
                               foregroundColor: const Color(0xFFFF5A1E),
@@ -139,4 +148,4 @@ class WelcomeScreen extends StatelessWidget {
       ),
     );
   }
-} 
+}

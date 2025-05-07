@@ -40,15 +40,13 @@ class _RegisterLivreurPageState extends State<RegisterLivreurPage> {
                 children: [
                   const SizedBox(height: 32),
                   // Logo stylisé
-                  const Text(
-                    'Shap',
-                    style: TextStyle(
-                      fontFamily: 'Lobster',
-                      fontSize: 80,
-                      fontWeight: FontWeight.bold,
-                      color: Colors.black,
-                    ),
-                  ),
+                  const Center(
+                child: Image(
+                  image: AssetImage('assets/images/Shap-noir 1.png'),
+                  height: 80,
+                  fit: BoxFit.contain,
+                ),
+              ),
                   const SizedBox(height: 48),
                   const Text(
                     "S'inscrire",
