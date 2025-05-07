@@ -30,6 +30,8 @@ class LogoutDialog extends StatelessWidget {
                     onPressed: () {
                       // Action de déconnexion
                       Navigator.pop(context, true);
+                      Navigator.pushReplacementNamed(
+                          context, 'client/login_screen.dart');
                     },
                     style: ElevatedButton.styleFrom(
                       backgroundColor: const Color(0xFFFF5722),
