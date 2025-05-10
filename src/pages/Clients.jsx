@@ -430,16 +430,19 @@ const Clients = () => {
                 <div className="modal-grid">
                   <div className="historique-section">
                     <h2>Historique des commandes</h2>
-                    <div className="commandes-list">
-                      {selectedClient.historique.map((commande, index) => (
-                        <div key={index} className="commande-item">
-                          <div className="commande-header">
-                            <span className="commande-numero">Commande n°{commande.numero}</span>
-                            <span className={`commande-statut ${getStatusClass(commande.statut)}`}>
+                    <div className="historique-list">
+                      {selectedClient.historique
+                        .sort((a, b) => new Date(b.date.split('/').reverse().join('-')) - new Date(a.date.split('/').reverse().join('-')))
+                        .slice(0, 5)
+                        .map((commande, index) => (
+                        <div key={index} className="historique-item">
+                          <div className="historique-header">
+                            <span className="commande-id">Commande n°{commande.numero}</span>
+                            <span className={`commande-status ${commande.statut}`}>
                               {commande.statut}
                             </span>
                           </div>
-                          <div className="commande-details">
+                          <div className="historique-details">
                             <div className="trajet">
                               <span>{commande.depart}</span>
                               <span className="arrow">→</span>

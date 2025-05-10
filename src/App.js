@@ -6,6 +6,7 @@ import Login from './pages/Login';
 import Dashboard from './pages/Dashboard';
 import Clients from './pages/Clients';
 import Livreurs from './pages/Livreurs';
+import Rapports from './pages/Rapports';
 import ForgotPassword from './pages/ForgotPassword';
 
 function App() {
@@ -18,6 +19,7 @@ function App() {
           <Route path="/dashboard" element={<Dashboard />} />
           <Route path="/clients" element={<Clients />} />
           <Route path="/livreurs" element={<Livreurs />} />
+          <Route path="/rapports" element={<Rapports />} />
           <Route path="/forgot-password" element={<ForgotPassword />} />
           <Route path="/" element={<Navigate to="/welcome" replace />} />
           <Route path="*" element={<Navigate to="/welcome" replace />} />
