@@ -22,14 +22,14 @@
 .welcome-logo {
   font-family: 'Brush Script MT', cursive;
   color: #FF5733;
-  font-size: 5rem;
+  font-size: 6rem;
   margin-bottom: 0.5rem;
   text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
 }
 
 .welcome-tagline {
   margin-bottom: 5rem;
-  font-size: 1.2rem;
+  font-size: 1.4rem;
   color: white;
 }
 
@@ -38,11 +38,11 @@
   color: #FF5733;
   border: none;
   border-radius: 25px;
-  padding: 15px 0;
-  font-size: 18px;
+  padding: 18px 0;
+  font-size: 20px;
   cursor: pointer;
   font-weight: 500;
-  width: 280px;
+  width: 300px;
   transition: all 0.2s ease;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
@@ -55,20 +55,4 @@
 
 .start-button:active {
   transform: translateY(1px);
-}
-
-@media (min-width: 768px) {
-  .welcome-logo {
-    font-size: 6rem;
-  }
-  
-  .welcome-tagline {
-    font-size: 1.4rem;
-  }
-  
-  .start-button {
-    width: 300px;
-    padding: 18px 0;
-    font-size: 20px;
-  }
 } 

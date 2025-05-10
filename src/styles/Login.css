@@ -13,21 +13,20 @@
 
 .login-content {
   background-color: rgba(51, 51, 51, 0.9);
-  padding: 2rem;
-  max-width: 850px;
-  width: 90%;
+  padding: 3rem;
+  width: 850px;
 }
 
 .login-logo {
   font-family: 'Brush Script MT', cursive;
   color: #FF5733;
-  font-size: 5rem;
+  font-size: 6rem;
   margin-bottom: 1.5rem;
   text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
 }
 
 .login-title {
-  font-size: 1.6rem;
+  font-size: 1.8rem;
   margin-bottom: 2rem;
   font-weight: 400;
 }
@@ -35,8 +34,7 @@
 .login-form {
   display: flex;
   flex-direction: column;
-  width: 100%;
-  max-width: 400px;
+  width: 400px;
   margin: 0 auto;
 }
 

@@ -4,6 +4,8 @@ import './App.css';
 import Welcome from './pages/Welcome';
 import Login from './pages/Login';
 import Dashboard from './pages/Dashboard';
+import Clients from './pages/Clients';
+import Livreurs from './pages/Livreurs';
 import ForgotPassword from './pages/ForgotPassword';
 
 function App() {
@@ -14,6 +16,8 @@ function App() {
           <Route path="/welcome" element={<Welcome />} />
           <Route path="/login" element={<Login />} />
           <Route path="/dashboard" element={<Dashboard />} />
+          <Route path="/clients" element={<Clients />} />
+          <Route path="/livreurs" element={<Livreurs />} />
           <Route path="/forgot-password" element={<ForgotPassword />} />
           <Route path="/" element={<Navigate to="/welcome" replace />} />
           <Route path="*" element={<Navigate to="/welcome" replace />} />
