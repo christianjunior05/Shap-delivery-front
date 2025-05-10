@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:file_picker/file_picker.dart';
+// import 'package:file_picker/file_picker.dart';
 import 'pending_screen.dart';
 
 class RegisterLivreurPage extends StatefulWidget {
@@ -20,10 +20,10 @@ class _RegisterLivreurPageState extends State<RegisterLivreurPage> {
   String? _carteGrise;
 
   Future<void> _pickFile(Function(String) onPicked) async {
-    FilePickerResult? result = await FilePicker.platform.pickFiles();
-    if (result != null && result.files.single.path != null) {
-      onPicked(result.files.single.name);
-    }
+    // FilePickerResult? result = await FilePicker.platform.pickFiles();
+    // if (result != null && result.files.single.path != null) {
+    //   onPicked(result.files.single.name);
+    // }
   }
 
   @override
