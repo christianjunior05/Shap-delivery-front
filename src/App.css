@@ -1,5 +1,24 @@
 .App {
   text-align: center;
+  height: 100%;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+/* Responsive design pour différentes tailles d'écran */
+@media (max-width: 768px) {
+  .App {
+    padding: 0 20px;
+  }
+}
+
+@media (min-width: 1200px) {
+  .App {
+    max-width: 1200px;
+    margin: 0 auto;
+  }
 }
 
 .App-logo {

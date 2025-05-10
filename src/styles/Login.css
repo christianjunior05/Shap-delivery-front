@@ -1,0 +1,115 @@
+.login-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+  background-color: #333333;
+  color: white;
+  text-align: center;
+  width: 100%;
+  position: relative;
+}
+
+.login-content {
+  background-color: rgba(51, 51, 51, 0.9);
+  padding: 2rem;
+  max-width: 850px;
+  width: 90%;
+}
+
+.login-logo {
+  font-family: 'Brush Script MT', cursive;
+  color: #FF5733;
+  font-size: 5rem;
+  margin-bottom: 1.5rem;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+}
+
+.login-title {
+  font-size: 1.6rem;
+  margin-bottom: 2rem;
+  font-weight: 400;
+}
+
+.login-form {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  max-width: 400px;
+  margin: 0 auto;
+}
+
+.form-group {
+  margin-bottom: 1.5rem;
+  width: 100%;
+}
+
+.login-input {
+  width: 100%;
+  padding: 15px;
+  border-radius: 30px;
+  border: none;
+  font-size: 16px;
+  background-color: white;
+  color: #333;
+  outline: none;
+}
+
+.connexion-button {
+  background-color: #FF5733;
+  color: white;
+  border: none;
+  border-radius: 25px;
+  padding: 12px;
+  font-size: 18px;
+  cursor: pointer;
+  margin-top: 1rem;
+  font-weight: 500;
+  width: 180px;
+  align-self: center;
+  transition: all 0.2s ease;
+}
+
+.connexion-button:hover {
+  background-color: #e64a2e;
+}
+
+.connexion-button:active {
+  transform: translateY(1px);
+}
+
+.forgot-password {
+  margin-top: 1.5rem;
+  text-align: center;
+}
+
+.forgot-password a {
+  color: white;
+  text-decoration: none;
+  font-size: 0.9rem;
+}
+
+.forgot-password a:hover {
+  text-decoration: underline;
+}
+
+.login-footer {
+  margin-top: 2rem;
+  font-size: 0.9rem;
+  color: #666;
+}
+
+@media (min-width: 768px) {
+  .login-content {
+    padding: 3rem;
+  }
+  
+  .login-logo {
+    font-size: 6rem;
+  }
+  
+  .login-title {
+    font-size: 1.8rem;
+  }
+} 
