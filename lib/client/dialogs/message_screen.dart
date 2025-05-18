@@ -16,7 +16,7 @@ class _MessageScreenState extends State<MessageScreen> {
   final TextEditingController _messageController = TextEditingController();
   final List<ChatMessage> _messages = [];
   bool _isTyping = false;
-  bool _isOnline = true;
+  final bool _isOnline = true;
 
   @override
   void initState() {

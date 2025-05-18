@@ -39,7 +39,7 @@ class _DeliveryRatingPageState extends State<DeliveryRatingPage> {
         child: Column(
           children: [
             const SizedBox(height: 20),
-            CircleAvatar(
+            const CircleAvatar(
               radius: 50,
               backgroundImage: AssetImage('assets/images/delivery_man.jpg'),
             ),

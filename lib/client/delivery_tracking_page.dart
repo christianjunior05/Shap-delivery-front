@@ -24,9 +24,9 @@ class _DeliveryTrackingPageState extends State<DeliveryTrackingPage> {
           icon: const Icon(Icons.arrow_back, color: Colors.white),
           onPressed: () => Navigator.pop(context),
         ),
-        title: Column(
+        title: const Column(
           crossAxisAlignment: CrossAxisAlignment.start,
-          children: const [
+          children: [
             Text(
               'Colis pris en charge\nLivraison en cours...',
               style: TextStyle(color: Colors.white, fontSize: 18),
@@ -174,15 +174,15 @@ class _DeliveryTrackingPageState extends State<DeliveryTrackingPage> {
   Widget _buildDeliveryMan() {
     return Row(
       children: [
-        CircleAvatar(
+        const CircleAvatar(
           radius: 25,
           backgroundImage: AssetImage('assets/images/delivery_man.jpg'),
         ),
         const SizedBox(width: 16),
-        Expanded(
+        const Expanded(
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
-            children: const [
+            children: [
               Text(
                 '',
                 style: TextStyle(

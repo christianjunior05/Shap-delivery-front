@@ -241,7 +241,7 @@ class _HomeScreenState extends State<HomeScreen> {
                     children: [
                       Container(
                         decoration: BoxDecoration(
-                          border: Border.all(color: Color(0xFFFF5722)),
+                          border: Border.all(color: const Color(0xFFFF5722)),
                           borderRadius: BorderRadius.circular(30),
                           color: Colors.white,
                         ),
@@ -249,10 +249,10 @@ class _HomeScreenState extends State<HomeScreen> {
                           horizontal: 12,
                           vertical: 6,
                         ),
-                        child: Row(
+                        child: const Row(
                           children: [
                             Icon(Icons.location_on, color: Color(0xFFFF5722)),
-                            const SizedBox(width: 5),
+                            SizedBox(width: 5),
                             Text(
                               'Ma position',
                               style: TextStyle(
@@ -670,17 +670,17 @@ class _HomeScreenState extends State<HomeScreen> {
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
-                  Row(
+                  const Row(
                     children: [
                       CircleAvatar(
                         radius: 30,
                         backgroundImage:
                             AssetImage('assets/images/profile.png'),
                       ),
-                      const SizedBox(width: 15),
+                      SizedBox(width: 15),
                       Column(
                         crossAxisAlignment: CrossAxisAlignment.start,
-                        children: const [
+                        children: [
                           Text(
                             'Nom utilisateur',
                             style: TextStyle(

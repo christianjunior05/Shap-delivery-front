@@ -82,7 +82,7 @@ class _DriverConnectionScreenState extends State<DriverConnectionScreen> {
                     const SizedBox(height: 50),
                     // Image du scooter
                     Image.asset(
-                      'assets/images/scooter_11933522.png',
+                      'assets/images/scooter_commande.gif',
                       height: 200,
                       fit: BoxFit.contain,
                     ),

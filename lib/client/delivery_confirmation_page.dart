@@ -42,16 +42,16 @@ class _DeliveryConfirmationPageState extends State<DeliveryConfirmationPage> {
           icon: const Icon(Icons.arrow_back, color: Colors.white),
           onPressed: () => Navigator.pop(context),
         ),
-        title: Column(
+        title: const Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            const Text(
+            Text(
               'Arriver\nEn attente du destinataire...',
               style: TextStyle(color: Colors.white, fontSize: 18),
             ),
-            const SizedBox(height: 4),
+            SizedBox(height: 4),
             Row(
-              children: const [
+              children: [
                 Text(
                   '02:10',
                   style: TextStyle(
@@ -62,7 +62,7 @@ class _DeliveryConfirmationPageState extends State<DeliveryConfirmationPage> {
                 ),
               ],
             ),
-            const Text(
+            Text(
               'Votre livreur est arrivé à destination.\nVous pouvez le contacter...',
               style: TextStyle(color: Colors.white, fontSize: 12),
             ),
@@ -201,15 +201,15 @@ class _DeliveryConfirmationPageState extends State<DeliveryConfirmationPage> {
   Widget _buildDeliveryMan() {
     return Row(
       children: [
-        CircleAvatar(
+        const CircleAvatar(
           radius: 25,
           backgroundImage: AssetImage('assets/images/delivery_man.jpg'),
         ),
         const SizedBox(width: 16),
-        Expanded(
+        const Expanded(
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
-            children: const [
+            children: [
               Text(
                 'Kome Bakary',
                 style: TextStyle(

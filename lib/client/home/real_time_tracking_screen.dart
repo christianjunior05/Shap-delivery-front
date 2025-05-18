@@ -362,13 +362,13 @@ class DeliveryTrackingScreen extends StatelessWidget {
                 ),
               },
               polylines: {
-                Polyline(
-                  polylineId: const PolylineId('route'),
-                  points: const [
+                const Polyline(
+                  polylineId: PolylineId('route'),
+                  points: [
                     LatLng(5.3484, -4.0305),
                     LatLng(5.3550, -4.0200),
                   ],
-                  color: const Color(0xFFFF5722),
+                  color: Color(0xFFFF5722),
                   width: 5,
                 ),
               },
@@ -526,15 +526,15 @@ class _DeliveryFeedbackScreenState extends State<DeliveryFeedbackScreen> {
           children: [
             const SizedBox(height: 16),
             // Informations du livreur
-            Row(
+            const Row(
               children: [
-                const CircleAvatar(
+                CircleAvatar(
                   radius: 25,
                   backgroundImage:
                       AssetImage('assets/images/driver_avatar.png'),
                 ),
-                const SizedBox(width: 16),
-                const Expanded(
+                SizedBox(width: 16),
+                Expanded(
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [

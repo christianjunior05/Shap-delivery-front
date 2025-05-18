@@ -87,16 +87,16 @@ class _DeliveryCompletedPageState extends State<DeliveryCompletedPage> {
                 const SizedBox(height: 24),
                 _buildDeliveryMan(),
                 const SizedBox(height: 16),
-                Row(
+                const Row(
                   children: [
-                    const Icon(Icons.attach_money,
+                    Icon(Icons.attach_money,
                         color: Colors.grey, size: 20),
-                    const SizedBox(width: 8),
-                    const Text(
+                    SizedBox(width: 8),
+                    Text(
                       'Prix : ',
                       style: TextStyle(color: Colors.grey),
                     ),
-                    const Text(
+                    Text(
                       '2 500 Fr CFA',
                       style: TextStyle(
                         fontWeight: FontWeight.bold,
@@ -144,15 +144,15 @@ class _DeliveryCompletedPageState extends State<DeliveryCompletedPage> {
   Widget _buildDeliveryMan() {
     return Row(
       children: [
-        CircleAvatar(
+        const CircleAvatar(
           radius: 25,
           backgroundImage: AssetImage('assets/images/delivery_man.jpg'),
         ),
         const SizedBox(width: 16),
-        Expanded(
+        const Expanded(
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
-            children: const [
+            children: [
               Text(
                 '',
                 style: TextStyle(

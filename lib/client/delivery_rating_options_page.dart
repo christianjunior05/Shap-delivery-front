@@ -46,15 +46,15 @@ class _DeliveryRatingOptionsPageState extends State<DeliveryRatingOptionsPage> {
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             const SizedBox(height: 20),
-            Center(
+            const Center(
               child: CircleAvatar(
                 radius: 50,
                 backgroundImage: AssetImage('assets/images/gbedolo_kan.jpg'),
               ),
             ),
             const SizedBox(height: 16),
-            Center(
-              child: const Text(
+            const Center(
+              child: Text(
                 'Gbedolo Kan',
                 style: TextStyle(
                   fontSize: 24,

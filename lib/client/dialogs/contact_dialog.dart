@@ -1,20 +1,35 @@
 import 'package:flutter/material.dart';
+import 'package:url_launcher/url_launcher.dart';
 
 class ContactDialog extends StatelessWidget {
   const ContactDialog({super.key});
 
-  Widget _buildContactItem(IconData icon, String text, Color iconColor) {
-    return Padding(
-      padding: const EdgeInsets.symmetric(vertical: 10),
-      child: Row(
-        children: [
-          Icon(icon, color: iconColor, size: 24),
-          const SizedBox(width: 15),
-          Text(
-            text,
-            style: const TextStyle(fontSize: 16),
-          ),
-        ],
+  Future<void> _launchUrl(String url) async {
+    if (await canLaunchUrl(Uri.parse(url))) {
+      await launchUrl(Uri.parse(url));
+    }
+  }
+
+  Widget _buildContactItem(
+      IconData icon, String text, Color iconColor, String url) {
+    return InkWell(
+      onTap: () => _launchUrl(url),
+      child: Padding(
+        padding: const EdgeInsets.symmetric(vertical: 10),
+        child: Row(
+          children: [
+            Icon(icon, color: iconColor, size: 24),
+            const SizedBox(width: 15),
+            Text(
+              text,
+              style: const TextStyle(
+                fontSize: 16,
+                color: Colors.blue,
+                // Suppression de: decoration: TextDecoration.underline,
+              ),
+            ),
+          ],
+        ),
       ),
     );
   }
@@ -52,16 +67,19 @@ class ContactDialog extends StatelessWidget {
               Icons.phone,
               '05 05 05 05 05',
               Colors.blue,
+              'tel:0505050505',
             ),
             _buildContactItem(
               Icons.message,
               '07 07 07 07 07',
               Colors.green,
+              'sms:0707070707',
             ),
             _buildContactItem(
               Icons.mail_outline,
               'shap@gmail.com',
               Colors.red,
+              'mailto:shap@gmail.com',
             ),
           ],
         ),

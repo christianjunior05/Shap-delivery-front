@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import '../../client/login_screen.dart';
 
 class LogoutDialog extends StatelessWidget {
   const LogoutDialog({super.key});
@@ -28,10 +29,14 @@ class LogoutDialog extends StatelessWidget {
                 Expanded(
                   child: ElevatedButton(
                     onPressed: () {
-                      // Action de déconnexion
                       Navigator.pop(context, true);
-                      Navigator.pushReplacementNamed(
-                          context, 'client/login_screen.dart');
+                      // Redirection vers la page de login
+                      Navigator.of(context).pushAndRemoveUntil(
+                        MaterialPageRoute(
+                          builder: (context) => const LoginScreen(),
+                        ),
+                        (route) => false,
+                      );
                     },
                     style: ElevatedButton.styleFrom(
                       backgroundColor: const Color(0xFFFF5722),
