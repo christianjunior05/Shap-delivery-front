@@ -661,144 +661,229 @@ class _HomeScreenState extends State<HomeScreen> {
 
   Widget _buildDrawer() {
     return Drawer(
+      width: 255,
       backgroundColor: const Color(0xFFFF5722),
-      child: SafeArea(
-        child: Column(
-          children: [
-            Padding(
-              padding: const EdgeInsets.all(20.0),
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: [
-                  const Row(
-                    children: [
-                      CircleAvatar(
-                        radius: 30,
-                        backgroundImage:
-                            AssetImage('assets/images/profile.png'),
+      child: Column(
+        children: [
+          // En-tête avec profil utilisateur
+          Container(
+            height: 280,
+            padding: const EdgeInsets.fromLTRB(33, 60, 20, 20),
+            child: Column(
+              children: [
+                // Bouton fermer en haut à droite
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.end,
+                  children: [
+                    Container(
+                      width: 34,
+                      height: 34,
+                      decoration: BoxDecoration(
+                        color: Colors.black,
+                        shape: BoxShape.circle,
+                        border: Border.all(color: Colors.white, width: 1),
                       ),
-                      SizedBox(width: 15),
-                      Column(
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: [
-                          Text(
-                            'Nom utilisateur',
-                            style: TextStyle(
-                              color: Colors.white,
-                              fontSize: 16,
-                              fontWeight: FontWeight.bold,
-                            ),
-                          ),
-                          Text(
-                            'Client ()',
-                            style: TextStyle(
-                              color: Colors.white,
-                              fontSize: 14,
-                            ),
-                          ),
-                        ],
+                      child: IconButton(
+                        padding: EdgeInsets.zero,
+                        icon: const Icon(Icons.close,
+                            color: Colors.white, size: 18),
+                        onPressed: () => Navigator.pop(context),
                       ),
-                    ],
-                  ),
-                  IconButton(
-                    icon: const Icon(Icons.close, color: Colors.white),
-                    onPressed: () => Navigator.pop(context),
-                  ),
-                ],
-              ),
+                    ),
+                  ],
+                ),
+                const SizedBox(height: 20),
+                // Profil utilisateur
+                Row(
+                  children: [
+                    CircleAvatar(
+                      radius: 40,
+                      backgroundImage: AssetImage('assets/images/client.png'),
+                      backgroundColor: Colors.white,
+                    ),
+                    const SizedBox(width: 15),
+                    Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        Text(
+                          'Gbedolo Kan',
+                          style: TextStyle(
+                            color: Colors.white,
+                            fontSize: 20,
+                            fontWeight: FontWeight.w700,
+                            fontFamily: 'Montserrat',
+                          ),
+                        ),
+                        const SizedBox(height: 4),
+                        Text(
+                          'Client (C0123)',
+                          style: TextStyle(
+                            color: Colors.black,
+                            fontSize: 15,
+                            fontWeight: FontWeight.w700,
+                            fontFamily: 'Montserrat',
+                          ),
+                        ),
+                      ],
+                    ),
+                  ],
+                ),
+              ],
             ),
-            const SizedBox(height: 20),
-            ListTile(
-              leading: const Icon(Icons.person_outline, color: Colors.white),
-              title: const Text(
-                'Profil',
-                style: TextStyle(color: Colors.white, fontSize: 16),
-              ),
-              onTap: () {
-                Navigator.pop(context);
-                Navigator.push(
-                  context,
-                  MaterialPageRoute(
-                      builder: (context) => const ProfileScreen()),
-                );
-              },
+          ),
+
+          // Menu items avec séparateurs
+          Expanded(
+            child: ListView(
+              padding: EdgeInsets.zero,
+              children: [
+                _buildMenuItemWithSeparator(
+                  icon: Icons.person_outline,
+                  title: 'Profil',
+                  onTap: () {
+                    Navigator.pop(context);
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                          builder: (context) => const ProfileScreen()),
+                    );
+                  },
+                ),
+                _buildMenuItemWithSeparator(
+                  icon: Icons.delivery_dining,
+                  title: 'Commander',
+                  onTap: () {
+                    Navigator.pop(context);
+                  },
+                ),
+                _buildMenuItemWithSeparator(
+                  icon: Icons.history,
+                  title: 'Historiques',
+                  onTap: () {
+                    Navigator.pop(context);
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                          builder: (context) => const HistoryScreen()),
+                    );
+                  },
+                ),
+                _buildMenuItemWithSeparator(
+                  icon: Icons.rate_review_outlined,
+                  title: 'Avis et commentaires',
+                  onTap: () {
+                    Navigator.pop(context);
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                          builder: (context) => const ReviewsScreen()),
+                    );
+                  },
+                ),
+                _buildMenuItemWithSeparator(
+                  icon: Icons.logout,
+                  title: 'Se déconnecter',
+                  onTap: () async {
+                    Navigator.pop(context);
+                    final result = await showDialog<bool>(
+                      context: context,
+                      builder: (context) => const LogoutDialog(),
+                    );
+                    if (result == true) {
+                      // Implement logout logic here
+                    }
+                  },
+                ),
+                _buildMenuItemWithSeparator(
+                  icon: Icons.support_agent,
+                  title: 'Centre d\'appel',
+                  onTap: () {
+                    Navigator.pop(context);
+                    showDialog(
+                      context: context,
+                      builder: (context) => const ContactDialog(),
+                    );
+                  },
+                  isLast: true,
+                ),
+              ],
             ),
-            ListTile(
-              leading: const Icon(Icons.delivery_dining, color: Colors.white),
-              title: const Text(
-                'Commander',
-                style: TextStyle(color: Colors.white, fontSize: 16),
-              ),
-              onTap: () {
-                Navigator.pop(context);
-              },
-            ),
-            ListTile(
-              leading: const Icon(Icons.history, color: Colors.white),
-              title: const Text(
-                'Historiques',
-                style: TextStyle(color: Colors.white, fontSize: 16),
-              ),
-              onTap: () {
-                Navigator.pop(context);
-                Navigator.push(
-                  context,
-                  MaterialPageRoute(
-                      builder: (context) => const HistoryScreen()),
-                );
-              },
-            ),
-            ListTile(
-              leading: const Icon(Icons.star_border, color: Colors.white),
-              title: const Text(
-                'Avis et commentaires',
-                style: TextStyle(color: Colors.white, fontSize: 16),
-              ),
-              onTap: () {
-                Navigator.pop(context);
-                Navigator.push(
-                  context,
-                  MaterialPageRoute(
-                      builder: (context) => const ReviewsScreen()),
-                );
-              },
-            ),
-            const Spacer(),
-            ListTile(
-              leading: const Icon(Icons.logout, color: Colors.white),
-              title: const Text(
-                'Se déconnecter',
-                style: TextStyle(color: Colors.white, fontSize: 16),
-              ),
-              onTap: () async {
-                Navigator.pop(context);
-                final result = await showDialog<bool>(
-                  context: context,
-                  builder: (context) => const LogoutDialog(),
-                );
-                if (result == true) {
-                  // Implement logout logic here
-                }
-              },
-            ),
-            ListTile(
-              leading: const Icon(Icons.support_agent, color: Colors.white),
-              title: const Text(
-                'Centre d\'appel',
-                style: TextStyle(color: Colors.white, fontSize: 16),
-              ),
-              onTap: () {
-                Navigator.pop(context);
-                showDialog(
-                  context: context,
-                  builder: (context) => const ContactDialog(),
-                );
-              },
-            ),
-            const SizedBox(height: 20),
-          ],
-        ),
+          ),
+        ],
       ),
     );
+  }
+
+  Widget _buildMenuItemWithSeparator({
+    required IconData icon,
+    required String title,
+    required VoidCallback onTap,
+    bool isLast = false,
+  }) {
+    return Column(
+      children: [
+        // Séparateur du haut
+        Container(
+          width: double.infinity,
+          height: 0.5,
+          color: Colors.white,
+        ),
+        // Item du menu
+        InkWell(
+          onTap: onTap,
+          child: Container(
+            width: double.infinity,
+            padding:
+                const EdgeInsets.symmetric(horizontal: 19.0, vertical: 20.0),
+            child: Row(
+              children: [
+                Icon(
+                  icon,
+                  color: Colors.white,
+                  size: _getIconSize(title),
+                ),
+                const SizedBox(width: 24),
+                Text(
+                  title,
+                  style: TextStyle(
+                    color: Colors.white,
+                    fontSize: 17,
+                    fontWeight:
+                        title == 'Profil' ? FontWeight.w700 : FontWeight.w500,
+                    fontFamily: 'Montserrat',
+                  ),
+                ),
+              ],
+            ),
+          ),
+        ),
+        // Séparateur du bas pour le dernier élément
+        if (isLast)
+          Container(
+            width: double.infinity,
+            height: 0.5,
+            color: Colors.white,
+          ),
+      ],
+    );
+  }
+
+  double _getIconSize(String title) {
+    switch (title) {
+      case 'Profil':
+        return 25;
+      case 'Commander':
+        return 35;
+      case 'Historiques':
+        return 30;
+      case 'Avis et commentaires':
+        return 40;
+      case 'Se déconnecter':
+        return 35;
+      case 'Centre d\'appel':
+        return 35;
+      default:
+        return 30;
+    }
   }
 }

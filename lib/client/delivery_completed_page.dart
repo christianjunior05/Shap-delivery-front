@@ -89,8 +89,7 @@ class _DeliveryCompletedPageState extends State<DeliveryCompletedPage> {
                 const SizedBox(height: 16),
                 const Row(
                   children: [
-                    Icon(Icons.attach_money,
-                        color: Colors.grey, size: 20),
+                    Icon(Icons.attach_money, color: Colors.grey, size: 20),
                     SizedBox(width: 8),
                     Text(
                       'Prix : ',

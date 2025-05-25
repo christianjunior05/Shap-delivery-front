@@ -4,6 +4,7 @@ import 'package:url_launcher/url_launcher.dart';
 import 'cancel_confirmation_dialog.dart';
 import 'new_order_dialog.dart';
 import 'real_time_tracking_screen.dart';
+import 'delivery_details_screen.dart';
 
 class DeliveryTrackingScreen extends StatelessWidget {
   const DeliveryTrackingScreen({super.key});
@@ -41,9 +42,14 @@ class DeliveryTrackingScreen extends StatelessWidget {
       );
 
       if (shouldNewOrder == true) {
-        // Rediriger vers la page de nouvelle commande
-        Navigator.of(context).pushReplacementNamed('/new_order');
+        // Rediriger vers la page de nouvelle commande (delivery_details_screen)
+        Navigator.of(context).pushReplacement(
+          MaterialPageRoute(
+            builder: (context) => const DeliveryDetailsScreen(),
+          ),
+        );
       } else {
+        // Retourner à l'écran précédent
         Navigator.of(context).pop();
       }
     }
@@ -156,26 +162,31 @@ class DeliveryTrackingScreen extends StatelessWidget {
                   _buildDeliveryDetail(
                     icon: Icons.access_time,
                     title: 'Durée de la livraison',
-                    value: '',
+                    value: '15-30 mins',
                   ),
                   _buildDeliveryDetail(
                     icon: Icons.location_on,
                     title: 'Adresse de départ',
-                    value: '',
+                    value: 'Cocody Riv Palmeraie',
                   ),
                   _buildDeliveryDetail(
                     icon: Icons.location_on,
                     title: 'Adresse de destination',
-                    value: '',
+                    value: 'Abobo Gare Bingerville',
                     showModifier: true,
                     onModifierPressed: () {
-                      // Implémenter la modification d'adresse
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                          builder: (context) => const DeliveryDetailsScreen(),
+                        ),
+                      );
                     },
                   ),
                   _buildDeliveryDetail(
                     icon: Icons.attach_money,
                     title: 'Prix',
-                    value: '',
+                    value: '2 500 fr CFA',
                   ),
                   const SizedBox(height: 16),
                   // Informations du livreur
@@ -193,7 +204,7 @@ class DeliveryTrackingScreen extends StatelessWidget {
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
                             Text(
-                              '',
+                              'Kome Bakary',
                               style: TextStyle(
                                 fontWeight: FontWeight.bold,
                                 fontSize: 16,
@@ -237,27 +248,40 @@ class DeliveryTrackingScreen extends StatelessWidget {
                       },
                       style: ElevatedButton.styleFrom(
                         backgroundColor: const Color(0xFFFF5722),
+                        foregroundColor: Colors.white,
                         padding: const EdgeInsets.symmetric(vertical: 16),
                         shape: RoundedRectangleBorder(
-                          borderRadius: BorderRadius.circular(8),
+                          borderRadius: BorderRadius.circular(25),
                         ),
+                        elevation: 0,
                       ),
                       child: const Text(
                         'Suivre',
                         style: TextStyle(
                           fontSize: 16,
                           fontWeight: FontWeight.bold,
+                          decoration: TextDecoration.none,
                         ),
                       ),
                     ),
                   ),
                   const SizedBox(height: 8),
                   Center(
-                    child: TextButton(
-                      onPressed: () => _handleCancel(context),
-                      child: const Text(
-                        'Annuler',
-                        style: TextStyle(color: Colors.grey, fontSize: 16),
+                    child: GestureDetector(
+                      onTap: () => _handleCancel(context),
+                      child: Container(
+                        padding: const EdgeInsets.symmetric(
+                          horizontal: 16,
+                          vertical: 8,
+                        ),
+                        child: const Text(
+                          'Annuler',
+                          style: TextStyle(
+                            color: Colors.grey,
+                            fontSize: 16,
+                            decoration: TextDecoration.none,
+                          ),
+                        ),
                       ),
                     ),
                   ),
@@ -303,13 +327,20 @@ class DeliveryTrackingScreen extends StatelessWidget {
                       ),
                     ),
                     if (showModifier)
-                      TextButton(
-                        onPressed: onModifierPressed,
-                        child: const Text(
-                          'Modifier',
-                          style: TextStyle(
-                            color: Color(0xFFFF5722),
-                            fontSize: 14,
+                      GestureDetector(
+                        onTap: onModifierPressed,
+                        child: Container(
+                          padding: const EdgeInsets.symmetric(
+                            horizontal: 12,
+                            vertical: 6,
+                          ),
+                          child: const Text(
+                            'Modifier',
+                            style: TextStyle(
+                              color: Color(0xFFFF5722),
+                              fontSize: 14,
+                              fontWeight: FontWeight.w500,
+                            ),
                           ),
                         ),
                       ),
