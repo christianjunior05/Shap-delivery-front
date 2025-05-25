@@ -68,66 +68,66 @@ class _DriverConnectionScreenState extends State<DriverConnectionScreen> {
             //   ),
             // ),
 
-            // Bouton retour (flèche gauche)
-            Positioned(
-              left: 33,
-              top: 62,
-              child: Transform(
-                alignment: Alignment.center,
-                transform: Matrix4.identity()..scale(-1.0, 1.0),
-                child: IconButton(
-                  icon: Icon(
-                    Icons.arrow_forward_ios,
-                    color: Colors.white.withOpacity(0.5),
-                    size: 21,
-                  ),
-                  onPressed: () {
-                    Navigator.of(context).pop();
-                  },
-                ),
-              ),
-            ),
+            // // Bouton retour (flèche gauche)
+            // Positioned(
+            //   left: 33,
+            //   top: 62,
+            //   child: Transform(
+            //     alignment: Alignment.center,
+            //     transform: Matrix4.identity()..scale(-1.0, 1.0),
+            //     child: IconButton(
+            //       icon: Icon(
+            //         Icons.arrow_forward_ios,
+            //         color: Colors.white.withOpacity(0.5),
+            //         size: 21,
+            //       ),
+            //       onPressed: () {
+            //         Navigator.of(context).pop();
+            //       },
+            //     ),
+            //   ),
+            // ),
 
             // Menu hamburger (3 lignes)
-            Positioned(
-              left: 41,
-              top: 73,
-              child: InkWell(
-                onTap: () {
-                  Scaffold.of(context).openDrawer();
-                },
-                child: Column(
-                  children: [
-                    Container(
-                      width: 24.85,
-                      height: 4.27,
-                      decoration: BoxDecoration(
-                        color: Colors.white,
-                        borderRadius: BorderRadius.circular(3),
-                      ),
-                    ),
-                    SizedBox(height: 2.86),
-                    Container(
-                      width: 24.85,
-                      height: 4.27,
-                      decoration: BoxDecoration(
-                        color: Colors.white,
-                        borderRadius: BorderRadius.circular(3),
-                      ),
-                    ),
-                    SizedBox(height: 2.86),
-                    Container(
-                      width: 24.85,
-                      height: 4.27,
-                      decoration: BoxDecoration(
-                        color: Colors.white,
-                        borderRadius: BorderRadius.circular(3),
-                      ),
-                    ),
-                  ],
-                ),
-              ),
-            ),
+            // Positioned(
+            //   left: 41,
+            //   top: 73,
+            //   child: InkWell(
+            //     onTap: () {
+            //       Scaffold.of(context).openDrawer();
+            //     },
+            //     child: Column(
+            //       children: [
+            //         Container(
+            //           width: 24.85,
+            //           height: 4.27,
+            //           decoration: BoxDecoration(
+            //             color: Colors.white,
+            //             borderRadius: BorderRadius.circular(3),
+            //           ),
+            //         ),
+            //         SizedBox(height: 2.86),
+            //         Container(
+            //           width: 24.85,
+            //           height: 4.27,
+            //           decoration: BoxDecoration(
+            //             color: Colors.white,
+            //             borderRadius: BorderRadius.circular(3),
+            //           ),
+            //         ),
+            //         SizedBox(height: 2.86),
+            //         Container(
+            //           width: 24.85,
+            //           height: 4.27,
+            //           decoration: BoxDecoration(
+            //             color: Colors.white,
+            //             borderRadius: BorderRadius.circular(3),
+            //           ),
+            //         ),
+            //       ],
+            //     ),
+            //   ),
+            // ),
 
             // Flèche droite
             Positioned(
